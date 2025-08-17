@@ -4,8 +4,8 @@ public class P_AnimationHandler : MonoBehaviour
 {
     Animator anim;
 
-    readonly int xInputHash = Animator.StringToHash("xInput");
-    readonly int yInputHash = Animator.StringToHash("yInput");
+    readonly int xVelocityHash = Animator.StringToHash("xVelocity");
+    readonly int zVelocityHash = Animator.StringToHash("zVelocity");
     readonly int isSprintHash = Animator.StringToHash("isSprint");
 
 
@@ -15,10 +15,10 @@ public class P_AnimationHandler : MonoBehaviour
     }
 
 
-    public void Animation_Walk(float xInput, float yInput, bool isSprint)
+    public void Animation_Walk(float xVelocity, float zVelocity, bool isSprint)
     { 
-        anim.SetFloat(xInputHash, xInput);
-        anim.SetFloat(yInputHash, yInput);
+        anim.SetFloat(xVelocityHash, xVelocity);
+        anim.SetFloat(zVelocityHash, zVelocity);
         anim.SetBool(isSprintHash, isSprint);
     }
 }
