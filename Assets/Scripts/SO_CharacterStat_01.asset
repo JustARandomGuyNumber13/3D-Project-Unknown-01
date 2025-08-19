@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3b114c6aa960245b2f6b573d6da635, type: 3}
   m_Name: SO_CharacterStat_01
   m_EditorClassIdentifier: 
-  acceleration: 0.9
-  zTopSpeed: 3
-  xTopSpeed: 3
+  zForwardAcceleration: 0.9
+  zBackwardAcceleration: 0.4
+  zForwardSpeed: 3
+  zBackwardSpeed: 1.5
+  xAcceleration: 0.5
+  xForwardSpeed: 2
+  xBackwardSpeed: 1

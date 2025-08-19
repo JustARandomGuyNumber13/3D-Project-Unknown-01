@@ -636,6 +636,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cStat: {fileID: 11400000, guid: 8f9fd9b59149f4b44b97d7fd4b1a8211, type: 2}
+  OnAttackOneEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAlterAttackOneEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1727393596
 MonoBehaviour:
   m_ObjectHideFlags: 0

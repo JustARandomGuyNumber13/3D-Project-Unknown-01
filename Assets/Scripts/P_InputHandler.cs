@@ -1,5 +1,5 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class P_InputHandler : MonoBehaviour
@@ -10,6 +10,10 @@ public class P_InputHandler : MonoBehaviour
 
     float xInput, zInput;
     bool isSprint;
+    bool isAlterAttack;
+
+    public UnityEvent OnAttackOneEvent;
+    public UnityEvent OnAlterAttackOneEvent;
 
     private void Awake()
     {
@@ -24,25 +28,36 @@ public class P_InputHandler : MonoBehaviour
 
     void Action_Move()
     {
-        float newVelocityX = Mathf.Clamp(rb.linearVelocity.x + xInput * cStat.acceleration, -cStat.xTopSpeed, cStat.xTopSpeed);
-        float newVelocityZ = Mathf.Clamp(rb.linearVelocity.z + zInput * cStat.acceleration, -cStat.zTopSpeed, cStat.zTopSpeed);
-        rb.linearVelocity = new Vector3 (newVelocityX, rb.linearVelocity.y, newVelocityZ);
+        float newVelocityZ = rb.linearVelocity.z;
+        newVelocityZ += zInput * (zInput < 0 ? cStat.zBackwardAcceleration : cStat.zForwardAcceleration);
+        newVelocityZ = Mathf.Clamp(newVelocityZ, -cStat.zBackwardSpeed, cStat.zForwardSpeed);
 
-        anim.Animation_Walk(newVelocityX / cStat.xTopSpeed, newVelocityZ / cStat.zTopSpeed, isSprint);
+        float newVelocityX = rb.linearVelocity.x + xInput * cStat.xAcceleration;
+        bool isMoving = (zInput != 0) || (xInput != 0);
+
+        if (zInput < 0) // Round up to 2 decimals to prevent "e" decimals value
+        {
+            newVelocityX = Mathf.Clamp(newVelocityX, -cStat.xBackwardSpeed, cStat.xBackwardSpeed);
+            float xAnim = (float) System.Math.Round(newVelocityX / cStat.xBackwardSpeed, 2);
+            float zAnim = (float) System.Math.Round(newVelocityZ / cStat.zBackwardSpeed, 2);
+            anim.Animation_Walk(xAnim, zAnim, isMoving, isSprint);
+        }
+        else
+        {
+            newVelocityX = Mathf.Clamp(newVelocityX, -cStat.xForwardSpeed, cStat.xForwardSpeed);
+            float xAnim = (float) System.Math.Round(newVelocityX / cStat.xForwardSpeed, 2);
+            float zAnim = (float) System.Math.Round(newVelocityZ / cStat.zForwardSpeed, 2);
+            anim.Animation_Walk(xAnim, zAnim, isMoving, isSprint);
+        }
+
+        rb.linearVelocity = new Vector3(newVelocityX, rb.linearVelocity.y, newVelocityZ);
     }
 
 
+    #region Input Handlers
     void OnMove(InputValue value)
     { 
         Vector2 input = value.Get<Vector2>();
-
-        //if (input.x < 0) xInput = -1;
-        //else if (input.x > 0) xInput = 1;
-        //else xInput = 0;
-
-        //if (input.y < 0) zInput = -1;
-        //else if (input.y > 0) zInput = 1;
-        //else zInput = 0;
 
         xInput = input.x;
         zInput = input.y;
@@ -51,4 +66,16 @@ public class P_InputHandler : MonoBehaviour
     {
         isSprint = value.Get<float>() == 1;
     }
+    void OnAttackOne(InputValue value)
+    {
+        if (value.Get<float>() == 1)
+            OnAttackOneEvent?.Invoke();
+
+        anim.Animation_Attack(isAlterAttack ? -1 : 1);
+    }
+    void OnAlterAttack(InputValue value)
+    {
+        isAlterAttack = value.Get<float>() == 1;
+    }
+    #endregion
 }

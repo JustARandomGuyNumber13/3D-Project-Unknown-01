@@ -3,7 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SO_CharacterStat", menuName = "Scriptable Objects/SO_CharacterStat")]
 public class SO_CharacterStat : ScriptableObject
 {
-    public float acceleration;
-    public float zTopSpeed;
-    public float xTopSpeed;
+    [Header("Z axis speed")]
+    public float zForwardAcceleration;
+    public float zBackwardAcceleration;
+    public float zForwardSpeed;
+    public float zBackwardSpeed;
+
+    [Header("X axis speed")]
+    public float xAcceleration;
+    public float xForwardSpeed;
+    public float xBackwardSpeed;
 }
