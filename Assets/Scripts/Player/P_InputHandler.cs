@@ -69,9 +69,15 @@ public class P_InputHandler : MonoBehaviour
     void OnAttackOne(InputValue value)
     {
         if (value.Get<float>() == 1)
-            OnAttackOneEvent?.Invoke();
-
-        anim.Animation_Attack(isAlterAttack ? -1 : 1);
+            if (!isAlterAttack)
+            {
+                OnAttackOneEvent?.Invoke();
+            }
+            else
+            {
+                OnAlterAttackOneEvent?.Invoke();
+            }
+        //anim.Animation_Attack(isAlterAttack ? -1 : 1);
     }
     void OnAlterAttack(InputValue value)
     {

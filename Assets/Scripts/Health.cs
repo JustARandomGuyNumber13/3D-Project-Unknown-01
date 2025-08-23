@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
         curHealth -= damageAmount;
         OnHealthChangeEvent?.Invoke(curHealth);
 
-        if (curHealth < 0)
+        if (curHealth <= 0)
         {
             OnDieEvent?.Invoke();
             StartCoroutine(RespawnCoroutine());
