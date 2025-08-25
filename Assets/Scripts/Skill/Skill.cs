@@ -22,13 +22,14 @@ public class Skill : MonoBehaviour
         CooldownDuration = new WaitForSeconds(data.CooldownDuration);
     }
 
-    public virtual void Activate()
-    { 
+    public virtual void Activate(Stat stat)
+    {
+        if (!stat.IsCanUseSkill || !IsReady) return;
+        stat.IsCanUseSkillCooldown(data.IsCanUseSkillCooldownDuration);
         StartCoroutine(ActivateCoroutine());
     }
     IEnumerator ActivateCoroutine()
     {
-        if (!IsReady) yield break;
         IsReady = false;
 
         OnSkillDelay();

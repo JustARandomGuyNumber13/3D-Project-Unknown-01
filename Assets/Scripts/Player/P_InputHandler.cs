@@ -2,23 +2,25 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Stat))]
 public class P_InputHandler : MonoBehaviour
 {
-    [SerializeField] SO_CharacterStat cStat;
+    Stat stat;
+    SO_PlayerStat cStat;
     P_AnimationHandler anim;
     Rigidbody rb;
 
     float xInput, zInput;
     bool isSprint;
-    bool isAlterAttack;
 
-    public UnityEvent OnAttackOneEvent;
-    public UnityEvent OnAlterAttackOneEvent;
+    public UnityEvent<Stat> OnSkillOneEvent;
 
     private void Awake()
     {
+        TryGetComponent<Stat>(out stat);
         TryGetComponent<P_AnimationHandler> (out anim);
         TryGetComponent<Rigidbody> (out rb);
+        cStat = stat.SO_stat as SO_PlayerStat;
     }
     private void FixedUpdate()
     {
@@ -28,6 +30,8 @@ public class P_InputHandler : MonoBehaviour
 
     void Action_Move()
     {
+        if (!stat.IsCanMove) return;
+
         float newVelocityZ = rb.linearVelocity.z;
         newVelocityZ += zInput * (zInput < 0 ? cStat.zBackwardAcceleration : cStat.zForwardAcceleration);
         newVelocityZ = Mathf.Clamp(newVelocityZ, -cStat.zBackwardSpeed, cStat.zForwardSpeed);
@@ -68,20 +72,10 @@ public class P_InputHandler : MonoBehaviour
     }
     void OnAttackOne(InputValue value)
     {
+        if (!stat.IsCanUseSkill) return;
+
         if (value.Get<float>() == 1)
-            if (!isAlterAttack)
-            {
-                OnAttackOneEvent?.Invoke();
-            }
-            else
-            {
-                OnAlterAttackOneEvent?.Invoke();
-            }
-        //anim.Animation_Attack(isAlterAttack ? -1 : 1);
-    }
-    void OnAlterAttack(InputValue value)
-    {
-        isAlterAttack = value.Get<float>() == 1;
+            OnSkillOneEvent?.Invoke(stat);
     }
     #endregion
 }

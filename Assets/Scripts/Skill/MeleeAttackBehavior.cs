@@ -3,16 +3,14 @@ using UnityEngine;
 public class MeleeAttackBehavior : Skill
 {
     [Header("Skill exclusive data")]
-    [SerializeField] P_AnimationHandler anim;
+    [SerializeField] Collider DamageCollider;
     [SerializeField] AnimationClip clip;
-    public Collider DamageCollider;
+    public P_AnimationHandler anim;
+    SO_AttackData attackData;
 
-    protected SO_Skill_AttackData attackData;
-
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
-        attackData = (SO_Skill_AttackData)data;
+        attackData = data as SO_AttackData;
     }
 
     protected override void OnSkillDelay()
@@ -34,12 +32,18 @@ public class MeleeAttackBehavior : Skill
 
     private void OnTriggerEnter(Collider other)
     {
-        Health target;
-        other.TryGetComponent<Health>(out target);
+        Health target; other.TryGetComponent<Health>(out target);
 
         if (target != null)
-        {
             target.TakeDamage(attackData.DamageAmount);
+
+        if (attackData.status.Length > 0)
+        {
+            StatusEffectHandler effect; other.TryGetComponent<StatusEffectHandler>(out effect);
+            
+            if(effect != null)
+                foreach(SO_StatusEffectData e in attackData.status)
+                    effect.ApplyStatusEffect(e);
         }
     }
 }

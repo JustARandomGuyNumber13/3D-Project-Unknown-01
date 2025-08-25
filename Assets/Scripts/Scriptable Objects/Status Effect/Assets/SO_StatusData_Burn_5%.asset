@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a6c2d0968aff14438ae168487cca708, type: 3}
-  m_Name: SO_Skill_AttackData_BareHandPunch
+  m_Script: {fileID: 11500000, guid: 29348716e4a6b274582b26fe02098f81, type: 3}
+  m_Name: SO_StatusData_Burn_5%
   m_EditorClassIdentifier: 
-  DelayDuration: 0.3
-  ActiveDuration: 0.2
-  CooldownDuration: 1
-  DamageAmount: 5
+  Duration: 10
+  Effect: 1
+  ApplyChance: 70
+  IsPercentage: 1
+  DamagePerTick: 5
+  TickInterval: 1
