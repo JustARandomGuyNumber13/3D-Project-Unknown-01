@@ -14,13 +14,17 @@ public class P_InputHandler : MonoBehaviour
     bool isSprint;
 
     public UnityEvent<Stat> OnSkillOneEvent;
+    public UnityEvent<Stat> OnSkillTwoEvent;
+    public UnityEvent<Stat> OnSkillThreeEvent;
+    public UnityEvent<Stat> OnSkillFourEvent;
+    public UnityEvent<Stat> OnSkillFiveEvent;
 
     private void Awake()
     {
         TryGetComponent<Stat>(out stat);
         TryGetComponent<P_AnimationHandler> (out anim);
         TryGetComponent<Rigidbody> (out rb);
-        cStat = stat.SO_stat as SO_PlayerStat;
+        cStat = stat.statData as SO_PlayerStat;
     }
     private void FixedUpdate()
     {
@@ -30,7 +34,7 @@ public class P_InputHandler : MonoBehaviour
 
     void Action_Move()
     {
-        if (!stat.IsCanMove) return;
+        if (!stat.IsCanMove || stat.IsStun) return;
 
         float newVelocityZ = rb.linearVelocity.z;
         newVelocityZ += zInput * (zInput < 0 ? cStat.zBackwardAcceleration : cStat.zForwardAcceleration);
@@ -56,7 +60,11 @@ public class P_InputHandler : MonoBehaviour
 
         rb.linearVelocity = new Vector3(newVelocityX, rb.linearVelocity.y, newVelocityZ);
     }
-
+    void Action_UseSkill(UnityEvent<Stat> skillEvent)
+    {
+        if (!stat.IsCanUseSkill || stat.IsStun) return;
+        skillEvent?.Invoke(stat);
+    }
 
     #region Input Handlers
     void OnMove(InputValue value)
@@ -72,10 +80,8 @@ public class P_InputHandler : MonoBehaviour
     }
     void OnAttackOne(InputValue value)
     {
-        if (!stat.IsCanUseSkill) return;
-
         if (value.Get<float>() == 1)
-            OnSkillOneEvent?.Invoke(stat);
+            Action_UseSkill(OnSkillOneEvent);
     }
     #endregion
 }

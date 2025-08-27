@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29348716e4a6b274582b26fe02098f81, type: 3}
-  m_Name: SO_StatusData_Burn_5%
+  m_Script: {fileID: 11500000, guid: 59b0906841dcfc04c8689c3239892bc8, type: 3}
+  m_Name: SO_StatusData_Stun_5sec
   m_EditorClassIdentifier: 
-  EffectSprite: {fileID: 21300000, guid: 7d346c11a8a4222479e7d8b184fc0786, type: 3}
-  Effect: 1
-  Duration: 3
+  EffectSprite: {fileID: 21300000, guid: ee35b3f7f2f1a844a8127383dab729aa, type: 3}
+  Effect: 4
+  Duration: 5
   ApplyChance: 100
-  IsPercentage: 1
-  DamagePerTick: 5
-  TickInterval: 1

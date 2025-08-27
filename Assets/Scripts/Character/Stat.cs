@@ -3,22 +3,25 @@ using UnityEngine;
 
 public class Stat : MonoBehaviour
 {
-    public SO_Stat SO_stat;
+    public SO_Stat statData;
 
+    public bool IsStun;
     public bool IsCanMove = true;
     public bool IsCanUseSkill = true;
     public bool IsAlive = true;
 
+    public float CurrentMaxHealth;
     public float CurrentHealth;
 
     private void Awake()
     {
+        CurrentMaxHealth = statData.MaxHealth;
         ResetHealth();
     }
 
     public void ResetHealth()
     { 
-        CurrentHealth = SO_stat.MaxHealth;
+        CurrentHealth = statData.MaxHealth;
     }
     public void IsCanUseSkillCooldown(float duration)
     { 

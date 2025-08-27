@@ -119,6 +119,82 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &9323984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9323985}
+  - component: {fileID: 9323986}
+  - component: {fileID: 9323987}
+  m_Layer: 5
+  m_Name: StatusEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9323985
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9323984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1207866481}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.0000038146973}
+  m_SizeDelta: {x: 300, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9323986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9323984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 5
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &9323987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9323984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a57ba7d0d2287e46a7e5467e1ef1798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8747188243310470677, guid: 7049f48f545a7314a89b616b1c26fe9a, type: 3}
 --- !u!1 &154121065
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +972,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 859753862}
+  - {fileID: 9323985}
   m_Father: {fileID: 1922220350}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1139,7 +1216,16 @@ PrefabInstance:
       addedObject: {fileID: 1727393601}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1929c1386838638488f076e3a7a6d1a8, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1727393607}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1929c1386838638488f076e3a7a6d1a8, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1727393603}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1929c1386838638488f076e3a7a6d1a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1727393606}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1929c1386838638488f076e3a7a6d1a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1727393605}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1929c1386838638488f076e3a7a6d1a8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1727393597}
@@ -1187,6 +1273,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnSkillTwoEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSkillThreeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSkillFourEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSkillFiveEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1727393596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,11 +1395,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165ba3ee17b1f5c4f84250b904abe816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SO_stat: {fileID: 11400000, guid: ab3c0b2f19b8f8d4f96e8f65aa20f469, type: 2}
+  statData: {fileID: 11400000, guid: ab3c0b2f19b8f8d4f96e8f65aa20f469, type: 2}
+  IsStun: 0
   IsCanMove: 1
   IsCanUseSkill: 1
   IsAlive: 1
+  CurrentMaxHealth: 0
   CurrentHealth: 0
+--- !u!114 &1727393605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727393592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724d04974b864dc4fb74adaab50c5c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyStatusEffectEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  RemoveStatusEffectEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1727393606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727393592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9320aea6e8f8cce4c918ade8bac1e99a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSetUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthDecreaseEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1727393607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727393592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd163146548128641ba3815c1e7d0ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 0}
+  health: {fileID: 0}
+  effectHandler: {fileID: 0}
 --- !u!1001 &1916986328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1375,10 +1532,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e00f55f3d4ff6e4098e8be3d970dbd8, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1922220351}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e00f55f3d4ff6e4098e8be3d970dbd8, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1922220352}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e00f55f3d4ff6e4098e8be3d970dbd8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1922220351}
+      addedObject: {fileID: 1922220356}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e00f55f3d4ff6e4098e8be3d970dbd8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1922220353}
@@ -1387,10 +1547,10 @@ PrefabInstance:
       addedObject: {fileID: 1922220348}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e00f55f3d4ff6e4098e8be3d970dbd8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1922220354}
+      addedObject: {fileID: 1922220355}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e00f55f3d4ff6e4098e8be3d970dbd8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1922220355}
+      addedObject: {fileID: 1922220354}
   m_SourcePrefab: {fileID: 100100000, guid: 9e00f55f3d4ff6e4098e8be3d970dbd8, type: 3}
 --- !u!1 &1922220347 stripped
 GameObject:
@@ -1565,10 +1725,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165ba3ee17b1f5c4f84250b904abe816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SO_stat: {fileID: 11400000, guid: c971b68154b223d418f353e7d778e555, type: 2}
+  statData: {fileID: 11400000, guid: c971b68154b223d418f353e7d778e555, type: 2}
+  IsStun: 0
   IsCanMove: 1
   IsCanUseSkill: 1
   IsAlive: 1
+  CurrentMaxHealth: 0
   CurrentHealth: 0
 --- !u!114 &1922220354
 MonoBehaviour:
@@ -1630,6 +1792,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724d04974b864dc4fb74adaab50c5c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ApplyStatusEffectEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9323987}
+        m_TargetAssemblyTypeName: UI_StatusEffectHandler, Assembly-CSharp
+        m_MethodName: ActivateStatus
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  RemoveStatusEffectEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9323987}
+        m_TargetAssemblyTypeName: UI_StatusEffectHandler, Assembly-CSharp
+        m_MethodName: DeactivateStatus
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1922220356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922220347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd163146548128641ba3815c1e7d0ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 0}
+  health: {fileID: 0}
+  effectHandler: {fileID: 0}
 --- !u!1 &1985570350
 GameObject:
   m_ObjectHideFlags: 0

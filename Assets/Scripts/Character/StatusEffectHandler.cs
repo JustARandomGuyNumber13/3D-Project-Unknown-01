@@ -1,55 +1,63 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using static SO_StatusEffectData.EffectType;
 
 
 public class StatusEffectHandler : MonoBehaviour
 {
-    Stat stat;
-    Health health;
+    Character character;
     Dictionary<SO_StatusEffectData.EffectType, StatusEffect> activeStatusEffects = new();
+
+    public UnityEvent<SO_StatusEffectData> ApplyStatusEffectEvent;
+    public UnityEvent<SO_StatusEffectData> RemoveStatusEffectEvent;
 
     private void Awake()
     {
-        TryGetComponent<Stat>(out stat);
-        TryGetComponent<Health>(out health);    
+        TryGetComponent<Character>(out character);
     }
 
-    public void ApplyStatusEffect(SO_StatusEffectData data)
+    public void ApplyStatusEffect(SO_StatusEffectData effectData)
     {
+        if (activeStatusEffects.ContainsKey(effectData.Effect)) return;
+
         int applyChance = Random.Range(0, 100);
-        print("Status " + data.Effect + " apply chance: " + data.ApplyChance + ", result: " + applyChance);
-        if (applyChance > data.ApplyChance)
-        {
-            print("Apply status " + data.Effect + ", fail !");
-            print("---");
-            return;
-        }
+        if (applyChance > effectData.ApplyChance) return;
+
         StatusEffect effect = null;
 
-        if(activeStatusEffects.ContainsKey(data.Effect))
-            print("Apply status " + data.Effect + ", fail ! Effect already exist");
-
-        switch (data.Effect)
+        switch (effectData.Effect)
         {
             case None:
+                print("No status effect");
                 break;
             case Burn:
-                effect = new StatusEffect_Burn(data, this, health);
+                effect = new StatusEffect_DOT(effectData, this, character.health);
+                break;
+            case Poison:
+                effect = new StatusEffect_DOT(effectData, this, character.health);
+                break;
+            case IncreaseMaxHealth:
+                effect = new StatusEffect_MaxHealth(effectData, this, character.stat);
+                break;
+            case DecreaseMaxHealth:
+                effect = new StatusEffect_MaxHealth(effectData, this, character.stat);
+                break;
+            case Stun:
+                effect = new StatusEffect_Stun(effectData, this, character.stat);
                 break;
         }
 
-        if (effect != null && !activeStatusEffects.ContainsKey(data.Effect))
+        if (effect != null)
         {
-            print("Apply status " + data.Effect + ", succesfully!");
-            activeStatusEffects.Add(data.Effect, effect);
+            ApplyStatusEffectEvent?.Invoke(effectData);
+            activeStatusEffects.Add(effectData.Effect, effect);
             StartCoroutine(effect.ApplyEffect());
         }
-        print("---");
     }
-    public void RemoveStatusEffect(SO_StatusEffectData data)
+    public void RemoveStatusEffect(SO_StatusEffectData effectData)
     {
-        print("Status effect " + data.Effect + " end");
-        activeStatusEffects.Remove(data.Effect);
+        RemoveStatusEffectEvent?.Invoke(effectData);
+        activeStatusEffects.Remove(effectData.Effect);
     }
 }

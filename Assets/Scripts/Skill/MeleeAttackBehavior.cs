@@ -34,9 +34,6 @@ public class MeleeAttackBehavior : Skill
     {
         Health target; other.TryGetComponent<Health>(out target);
 
-        if (target != null)
-            target.TakeDamage(attackData.DamageAmount);
-
         if (attackData.status.Length > 0)
         {
             StatusEffectHandler effect; other.TryGetComponent<StatusEffectHandler>(out effect);
@@ -45,5 +42,8 @@ public class MeleeAttackBehavior : Skill
                 foreach(SO_StatusEffectData e in attackData.status)
                     effect.ApplyStatusEffect(e);
         }
+
+        if (target != null)
+            target.TakeDamage(attackData.DamageAmount);
     }
 }

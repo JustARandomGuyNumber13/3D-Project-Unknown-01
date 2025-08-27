@@ -19,3 +19,7 @@ MonoBehaviour:
   DamageAmount: 1
   status:
   - {fileID: 11400000, guid: 40d043de530f6ab4e9460222c2744450, type: 2}
+  - {fileID: 11400000, guid: 59265831fbd628148b44eb74a8146928, type: 2}
+  - {fileID: 11400000, guid: 99f64deaf39dab4478b215418dc87972, type: 2}
+  - {fileID: 11400000, guid: 53358bc43ed120047835f9dbcda26c78, type: 2}
+  - {fileID: 11400000, guid: bf22e2a45649c2f4596639427beb3e1c, type: 2}
