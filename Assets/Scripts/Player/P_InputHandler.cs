@@ -8,22 +8,18 @@ public class P_InputHandler : MonoBehaviour
     Stat stat;
     SO_PlayerStat cStat;
     P_AnimationHandler anim;
+    SkillHandler skillHandler;
     Rigidbody rb;
 
     float xInput, zInput;
     bool isSprint;
 
-    public UnityEvent<Stat> OnSkillOneEvent;
-    public UnityEvent<Stat> OnSkillTwoEvent;
-    public UnityEvent<Stat> OnSkillThreeEvent;
-    public UnityEvent<Stat> OnSkillFourEvent;
-    public UnityEvent<Stat> OnSkillFiveEvent;
-
     private void Awake()
     {
-        TryGetComponent<Stat>(out stat);
-        TryGetComponent<P_AnimationHandler> (out anim);
-        TryGetComponent<Rigidbody> (out rb);
+        TryGetComponent(out stat);
+        TryGetComponent(out anim);
+        TryGetComponent(out rb);
+        TryGetComponent(out skillHandler);
         cStat = stat.statData as SO_PlayerStat;
     }
     private void FixedUpdate()
@@ -34,7 +30,11 @@ public class P_InputHandler : MonoBehaviour
 
     void Action_Move()
     {
-        if (!stat.IsCanMove || stat.IsStun) return;
+        if (!stat.IsCanMove || stat.IsStun)
+        {
+            anim.Animation_Walk(0, 0, false, false);
+            return;
+        }
 
         float newVelocityZ = rb.linearVelocity.z;
         newVelocityZ += zInput * (zInput < 0 ? cStat.zBackwardAcceleration : cStat.zForwardAcceleration);
@@ -60,10 +60,9 @@ public class P_InputHandler : MonoBehaviour
 
         rb.linearVelocity = new Vector3(newVelocityX, rb.linearVelocity.y, newVelocityZ);
     }
-    void Action_UseSkill(UnityEvent<Stat> skillEvent)
+    void Action_UseSkill(int index)
     {
-        if (!stat.IsCanUseSkill || stat.IsStun) return;
-        skillEvent?.Invoke(stat);
+        skillHandler.UseSkill(stat, index);
     }
 
     #region Input Handlers
@@ -78,10 +77,30 @@ public class P_InputHandler : MonoBehaviour
     {
         isSprint = value.Get<float>() == 1;
     }
-    void OnAttackOne(InputValue value)
+    void OnSkillOne(InputValue value)
     {
         if (value.Get<float>() == 1)
-            Action_UseSkill(OnSkillOneEvent);
+            Action_UseSkill(0);
+    }
+    void OnSkillTwo(InputValue value)
+    {
+        if (value.Get<float>() == 1)
+            Action_UseSkill(1);
+    }
+    void OnSkillThree(InputValue value)
+    {
+        if (value.Get<float>() == 1)
+            Action_UseSkill(2);
+    }
+    void OnSkillFour(InputValue value)
+    {
+        if (value.Get<float>() == 1)
+            Action_UseSkill(3);
+    }
+    void OnSkillFive(InputValue value)
+    {
+        if (value.Get<float>() == 1)
+            Action_UseSkill(4);
     }
     #endregion
 }

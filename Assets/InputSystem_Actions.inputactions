@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "AttackOne",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
                     "expectedControlType": "",
@@ -87,13 +87,49 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Alter Attack",
-                    "type": "PassThrough",
-                    "id": "95556136-6995-4147-beb3-6741d416e9d0",
+                    "name": "SkillOne",
+                    "type": "Value",
+                    "id": "0d161be7-a796-4f41-a3b8-b19f48700a2a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SkillTwo",
+                    "type": "Value",
+                    "id": "ce7726bc-0768-4705-9ed1-2444c7b58f0e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SkillThree",
+                    "type": "Value",
+                    "id": "3467d770-2261-4b9a-ab26-8dd796f7c8e0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SkillFour",
+                    "type": "Value",
+                    "id": "7d2ea1e7-8135-478b-bb32-da820cda1048",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SkillFive",
+                    "type": "Value",
+                    "id": "01a26c8f-0170-49a9-af04-dedc094d120a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -269,7 +305,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "AttackOne",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -280,7 +316,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "AttackOne",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -291,7 +327,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
-                    "action": "AttackOne",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -302,7 +338,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "AttackOne",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -313,7 +349,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "AttackOne",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -324,7 +360,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "AttackOne",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -484,12 +520,56 @@
                 },
                 {
                     "name": "",
-                    "id": "cbfb242a-a50a-4ad0-9df1-c7fa7ccd41a9",
-                    "path": "<Keyboard>/leftAlt",
+                    "id": "1e3ca392-b153-4603-8264-db77c67528e1",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Alter Attack",
+                    "action": "SkillOne",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "34ef60fe-f5aa-473e-8235-dca719658f55",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkillTwo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa494b90-1154-42e2-a802-ca097b4990c6",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkillFour",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9ed9887d-6e88-425b-958c-98714b95525f",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkillThree",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2532059d-7aa8-49cd-a5da-d4bf254769a3",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkillFive",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

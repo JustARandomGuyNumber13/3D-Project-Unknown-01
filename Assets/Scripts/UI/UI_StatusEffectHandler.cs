@@ -17,14 +17,12 @@ public class UI_StatusEffectHandler : MonoBehaviour
 
         icon.sprite = effectData.EffectSprite;
         effectRecord.Add(effectData.EffectSprite, newStatusBox);
-        print("Create new icon: " + effectData.Effect);
     }
 
     public void DeactivateStatus(SO_StatusEffectData effectData) 
     {
         if (!effectRecord.ContainsKey(effectData.EffectSprite)) return;
 
-        Debug.Log("Deactivate icon: " + effectData.Effect);
         effectRecord[effectData.EffectSprite].SetActive(false);
     }
 
@@ -35,9 +33,6 @@ public class UI_StatusEffectHandler : MonoBehaviour
         if (!effectRecord.ContainsKey(effectData.EffectSprite))
             CreateNewRecord(effectData);
         else
-        {
             effectRecord[effectData.EffectSprite].SetActive(true);
-            Debug.Log("Activate icon: " + effectData.Effect);
-        }
     }
 }

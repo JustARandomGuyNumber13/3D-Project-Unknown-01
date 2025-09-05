@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d0e4356bf8c464cb04930ed719fb8c, type: 3}
   m_Name: SO_AttackData_FirePunch
   m_EditorClassIdentifier: 
+  skillName: Fire Punch
+  skillIcon: {fileID: 21300000, guid: cb1d456cacd42eb4797935d74e94e5fc, type: 3}
+  SkillBehavior: {fileID: 11500000, guid: bf0286559573b6d44b5d2bff908c1c89, type: 3}
+  animationClip: {fileID: -203655887218126122, guid: b60a146f10d341b4d8de25b767864aff, type: 3}
   IsCanUseSkillCooldownDuration: 1.5
   DelayDuration: 0.2
-  ActiveDuration: 0.3
+  ActiveDuration: 0.5
   CooldownDuration: 1
   DamageAmount: 1
+  DamageCollider: 0
   status:
   - {fileID: 11400000, guid: 40d043de530f6ab4e9460222c2744450, type: 2}
-  - {fileID: 11400000, guid: 59265831fbd628148b44eb74a8146928, type: 2}
-  - {fileID: 11400000, guid: 99f64deaf39dab4478b215418dc87972, type: 2}
-  - {fileID: 11400000, guid: 53358bc43ed120047835f9dbcda26c78, type: 2}
-  - {fileID: 11400000, guid: bf22e2a45649c2f4596639427beb3e1c, type: 2}
